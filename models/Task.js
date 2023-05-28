@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const AutoIncrement = require("mongoose-sequence")(mongoose);
 
-const ProjectSchema = new mongoose.Schema(
+const TaskSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -37,4 +37,4 @@ taskSchema.plugin(AutoIncrement, {
   start_seq: 1000,
 });
 
-module.exports = mongoose.model("Project", ProjectSchema);
+module.exports = mongoose.model("Task", TaskSchema);
