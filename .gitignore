@@ -1,2 +1,9 @@
-node_modules
-logs
+node_modules/
+logs/
+*.env
+*.swp
+*.log
+*.pid
+*.lock
+*.tmp
+*.DS_Store
