@@ -4,9 +4,8 @@ const ProjectSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Project name cannot be empty"],
-      min: [1, "Project name must be at least 1 characters long"],
-      unique: [true, "Project name already exists"],
+      required: true,
+      unique: true,
     },
     user: [
       {

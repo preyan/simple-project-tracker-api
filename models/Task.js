@@ -15,11 +15,11 @@ const TaskSchema = new mongoose.Schema(
     },
     title: {
       type: String,
-      required: [true, "Task title cannot be empty"],
+      required: true,
     },
     description: {
       type: String,
-      required: [true, "Task description cannot be empty"],
+      required: true,
     },
     completed: {
       type: Boolean,
@@ -31,7 +31,7 @@ const TaskSchema = new mongoose.Schema(
   }
 );
 
-taskSchema.plugin(AutoIncrement, {
+TaskSchema.plugin(AutoIncrement, {
   inc_field: "ticket",
   id: "ticketNums",
   start_seq: 1000,
