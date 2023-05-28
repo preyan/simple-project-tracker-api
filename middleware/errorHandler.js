@@ -1,4 +1,4 @@
-const logEvents = require('./logger');
+const {logEvents} = require('./logger');
 
 const errorHandler = (err, req, res, next) => {
     logEvents(`${err.name} : ${err.message}\t${err.url}\t${req.headers.origin}`, 'errors.log');
