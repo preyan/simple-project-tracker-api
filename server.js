@@ -28,6 +28,7 @@ app.use(cookieParser());
 app.use("/", express.static(path.join(__dirname, "public")));
 
 app.use("/", require("./routes/root"));
+app.use("/users", require("./routes/user"));
 
 app.all("*", (req, res) => {
   res.status(404);
@@ -48,6 +49,7 @@ mongoose.connection.once("open", () => {
   });
   logEvents(`Connected to MongoDB`, "mongoConnections.log");
 });
+
 mongoose.connection.on("error", (err) => {
   app.listen(PORT, () => {
     console.log(`Error:  ${err}`);
