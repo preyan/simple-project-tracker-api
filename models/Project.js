@@ -7,10 +7,13 @@ const ProjectSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    user: [
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    users: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: "User",
       },
     ],
