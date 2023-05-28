@@ -1,5 +1,4 @@
 const User = require("../models/user");
-const Project = require("../models/project");
 const Task = require("../models/task");
 
 const asyncHandler = require("express-async-handler");
@@ -11,7 +10,7 @@ const bcrypt = require("bcrypt");
 getUsers = asyncHandler(async (req, res) => {
   const users = await User.find().select("-password").lean();
   if (!users || users.length === 0) {
-    res.status(400).json({ message: "No users found" });
+    return res.status(400).json({ message: "No users found" });
   }
   res.json(users);
 });
@@ -24,13 +23,15 @@ createUser = asyncHandler(async (req, res) => {
 
   //Confirm data - Check if all required fields are provided
   if (!username || !password || !Array.isArray(roles) || !roles.length) {
-    res.status(400).json({ message: "Please provide all required fields" });
+    return res
+      .status(400)
+      .json({ message: "Please provide all required fields" });
   }
 
   //Duplicate Check - Check if user already exists
   const isDuplicate = await User.findOne({ username }).lean().exec();
   if (isDuplicate) {
-    res.status(409).json({ message: "User already exists" });
+    return res.status(409).json({ message: "User already exists" });
   }
 
   //Hash password - Hash password before saving to database
@@ -44,7 +45,7 @@ createUser = asyncHandler(async (req, res) => {
   //Create and save the user details
   const user = await User.create(userDetails);
   if (!user) {
-    res.status(400).json({ message: "Invalid user details recieved" });
+    return res.status(400).json({ message: "Invalid user details recieved" });
   }
   res
     .status(201)
@@ -65,19 +66,21 @@ updateUser = asyncHandler(async (req, res) => {
     !roles.length ||
     typeof active !== "boolean"
   ) {
-    res.status(400).json({ message: "Please provide all required fields" });
+    return res
+      .status(400)
+      .json({ message: "Please provide all required fields" });
   }
 
   const user = await User.findById(id).exec();
 
   if (!user) {
-    res.status(404).json({ message: "User not found" });
+    return res.status(404).json({ message: "User not found" });
   }
   //Check Duplicate - Check if username is already taken
   const isDuplicate = await User.findOne({ username }).lean().exec();
   //Allow updates to the original user
   if (isDuplicate && isDuplicate._id.toString() !== id) {
-    res.status(409).json({ message: "Username already taken" });
+    return res.status(409).json({ message: "Username already taken" });
   }
 
   user.username = username;
@@ -102,16 +105,16 @@ updateUser = asyncHandler(async (req, res) => {
 deleteUser = asyncHandler(async (req, res) => {
   const { id } = req.body;
   if (!id) {
-    res.status(400).json({ message: "Please provide a valid UserID" });
+    return res.status(400).json({ message: "Please provide a valid UserID" });
   }
   const tasks = await Task.findOne({ user: id }).lean().exec();
   if (tasks?.length) {
-    res.status(400).json({ message: "User has active tasks" });
+    return res.status(400).json({ message: "User has active tasks" });
   }
 
   const user = await User.findById(id).exec();
   if (!user) {
-    res.status(404).json({ message: "User not found" });
+    return res.status(404).json({ message: "User not found" });
   }
 
   const result = await user.deleteOne();
