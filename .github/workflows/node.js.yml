@@ -44,5 +44,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run Test case
+      - name: Validate test cases
         run: pnpm test
