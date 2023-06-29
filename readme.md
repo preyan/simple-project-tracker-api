@@ -1,4 +1,4 @@
-# Simple Project Tracker API
+# Simple Project Tracker Backend
 
 **Express Server with MongoDB**
 This is a simple Express server that uses MongoDB as a database. It exposes a few RESTful APIs for managing users, projects, and tasks. This project uses `pnpm` as the default package manager.
