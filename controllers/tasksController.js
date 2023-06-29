@@ -9,7 +9,7 @@ const task = require("../models/task");
 // @route   GET /tasks
 // @access  Private
 getTasks = asyncHandler(async (req, res) => {
-  const tasks = await User.find().lean();
+  const tasks = await Task.find().lean();
   if (!tasks || tasks.length === 0) {
     return res.status(400).json({ message: "No Tasks found" });
   }
