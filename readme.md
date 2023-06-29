@@ -41,3 +41,10 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 ## License
 
 This project is licensed under the MIT License.
+
+## Supported Versions
+
+| Version | Supported          |
+| ------- | ------------------ |
+| > 1.0   | :x:                |
+| = 1.0   | :white_check_mark: |
