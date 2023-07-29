@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   bcrypt:
     specifier: ^5.1.0
@@ -23,11 +27,11 @@ dependencies:
     specifier: ^1.2.0
     version: 1.2.0
   mongoose:
-    specifier: ^7.2.1
-    version: 7.2.1
+    specifier: ^7.3.3
+    version: 7.3.3
   mongoose-sequence:
     specifier: ^5.3.1
-    version: 5.3.1(mongoose@7.2.1)
+    version: 5.3.1(mongoose@7.3.3)
   uuid:
     specifier: ^9.0.0
     version: 9.0.0
@@ -711,8 +715,8 @@ packages:
       whatwg-url: 11.0.0
     dev: false
 
-  /mongodb@5.5.0:
-    resolution: {integrity: sha512-XgrkUgAAdfnZKQfk5AsYL8j7O99WHd4YXPxYxnh8dZxD+ekYWFRA3JktUsBnfg+455Smf75/+asoU/YLwNGoQQ==}
+  /mongodb@5.6.0:
+    resolution: {integrity: sha512-z8qVs9NfobHJm6uzK56XBZF8XwM9H294iRnB7wNjF0SnY93si5HPziIJn+qqvUR5QOff/4L0gCD6SShdR/GtVQ==}
     engines: {node: '>=14.20.1'}
     peerDependencies:
       '@aws-sdk/credential-providers': ^3.201.0
@@ -733,23 +737,23 @@ packages:
       saslprep: 1.0.3
     dev: false
 
-  /mongoose-sequence@5.3.1(mongoose@7.2.1):
+  /mongoose-sequence@5.3.1(mongoose@7.3.3):
     resolution: {integrity: sha512-kQB1ctCdAQT8YdQzoHV0CpBRsO4RNVy03SOkzM6TQKBbGBs1ZgVS4UlKsuvBPaiPt9q5tKgQZvorGJ1awbHDqA==}
     peerDependencies:
       mongoose: '>=4'
     dependencies:
       async: 2.6.4
       lodash: 4.17.21
-      mongoose: 7.2.1
+      mongoose: 7.3.3
     dev: false
 
-  /mongoose@7.2.1:
-    resolution: {integrity: sha512-c2OOl+ch9NlmPeJw7UjSb2jHNjoOw1XXHyzwygIf4z1GmaBx1OYb8OYqHkYPivvEmfY/vUWZFCgePsDqZgFn2w==}
+  /mongoose@7.3.3:
+    resolution: {integrity: sha512-g4NrRGIUEUYLeScaSChQR8i4Dlk9lR0UJzkK3r6TPJyqJ6ZWdRVP3oXfOG9Yn+hNeKcCJKfVEHo+jsU1rh3YTA==}
     engines: {node: '>=14.20.1'}
     dependencies:
       bson: 5.3.0
       kareem: 2.5.1
-      mongodb: 5.5.0
+      mongodb: 5.6.0
       mpath: 0.9.0
       mquery: 5.0.0
       ms: 2.1.3
